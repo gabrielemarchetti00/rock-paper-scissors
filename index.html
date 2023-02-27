@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            const moves = ["Rock", "Paper", "Scissors"];
+            const random = Math.floor(Math.random() * moves.length);
+            return moves[random];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            let winner;
+            switch (playerSelection) {
+                case "rock":
+                    if (computerSelection == "Paper") {
+                        winner = "You Lose! Paper beats Rock";
+                    }
+                    else if (computerSelection == "Rock") {
+                        winner = "Tie!";
+                    }
+                    else if (computerSelection == "Scissors") {
+                        winner = "You Won! Rock beats Scissors";
+                    }
+                    break;
+                case "paper":
+                    if (computerSelection == "Scissors") {
+                        winner = "You Lose! Scissors beats Paper";
+                    }
+                    else if (computerSelection == "Paper") {
+                        winner = "Tie!";
+                    }
+                    else if (computerSelection == "Rock") {
+                        winner = "You Won! Paper beats Rock";
+                    }
+                    break;
+                case "scissors":
+                    if (computerSelection == "Paper") {
+                        winner = "You Lose! Paper beats Rock";
+                    }
+                    else if (computerSelection == "Rock") {
+                        winner = "You Lose! Rock beats Scissors";
+                    }
+                    else if (computerSelection == "Scissors") {
+                        winner = "Tie!";
+                    }
+            }
+            return winner;
+        }
+        
+        const playerSelection = "paper";
+        const computerSelection = getComputerChoice();
+        console.log(computerSelection);
+        console.log(playRound(playerSelection, computerSelection));
+
+    </script>
+</body>
+</html>
