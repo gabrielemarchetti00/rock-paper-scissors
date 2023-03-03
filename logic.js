@@ -6,6 +6,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let winner;
+    //console.log(computerSelection);
     switch (playerSelection) {
         case "rock":
             if (computerSelection == "Paper") {
@@ -35,18 +36,31 @@ function playRound(playerSelection, computerSelection) {
             break;
         case "scissors":
             if (computerSelection == "Paper") {
-                winner = "You Lose! Paper beats Rock";
-                computerScore++;
+                winner = "You Won! Scissors beat Rock";
+                playerScore++;
             }
             else if (computerSelection == "Rock") {
                 winner = "You Lose! Rock beats Scissors";
-                playerScore++;
+                computerScore++;
             }
             else if (computerSelection == "Scissors") {
                 winner = "Tie!";
             }
     }
-    console.log(winner);
+    round.textContent = winner;
+    runningScore.textContent = `You: ${playerScore}, Computer: ${computerScore}`;
+    if (playerScore == 5) {
+        gameWinner.textContent = "YOU WON!!";
+        document.getElementById("rock-button").disabled = true;
+        document.getElementById("scissors-button").disabled = true;
+        document.getElementById("paper-button").disabled = true;
+    }
+    else if (computerScore == 5) {
+        gameWinner.textContent = "YOU LOSE";
+        document.getElementById("rock-button").disabled = true;
+        document.getElementById("scissors-button").disabled = true;
+        document.getElementById("paper-button").disabled = true;
+    }
 }
 /*
 function game() {
@@ -87,3 +101,12 @@ sbtn.addEventListener("click", () => { playRound('scissors', getComputerChoice()
 
 const pbtn = document.querySelector('#paper-button');
 pbtn.addEventListener("click", () => { playRound('paper', getComputerChoice()) });
+
+
+const round = document.querySelector('.round');
+const runningScore = document.querySelector('.running-score');
+const gameWinner = document.querySelector('.winner');
+
+
+
+
